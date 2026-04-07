@@ -11,12 +11,9 @@ async def init_db():
     mongodb_uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
     
     client = AsyncIOMotorClient(mongodb_uri)
-    # If no database name is in the URI path, use 'birthday_db' as default
-    db_name = mongodb_uri.split('/')[-1].split('?')[0]
-    if not db_name:
-        database = client.birthday_db
-    else:
-        database = client.get_default_database()
+    # Load database name from env, default to 'mylove' as requested
+    db_name = os.getenv("DB_NAME", "mylove")
+    database = client[db_name]
     
     await init_beanie(
         database=database,
