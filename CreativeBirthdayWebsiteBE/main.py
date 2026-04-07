@@ -6,16 +6,19 @@ from fastapi.middleware.cors import CORSMiddleware
 from datetime import timedelta
 from typing import List
 
+from dotenv import load_dotenv
+
 import models, schemas, auth
 from database import init_db
+
+load_dotenv()
 
 app = FastAPI(title="Romantic Birthday Website API")
 
 # Setup CORS so the frontend can easily communicate
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173")
+origins = [origin.strip() for origin in allowed_origins_env.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
