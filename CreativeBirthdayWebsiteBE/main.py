@@ -39,6 +39,14 @@ app.mount("/static", StaticFiles(directory=IMAGES_FOLDER), name="static")
 async def startup_event():
     await init_db()
 
+@app.get("/")
+async def root():
+    return {
+        "message": "Welcome to the Romantic Birthday Website API",
+        "documentation": "/docs",
+        "status": "Running successfully on Vercel"
+    }
+
 @app.post("/token", response_model=schemas.Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     user = await models.User.find_one(models.User.username == form_data.username)
