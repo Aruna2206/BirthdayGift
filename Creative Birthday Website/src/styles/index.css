@@ -1,3 +1,89 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+:root {
+  --font-primary: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-romantic: 'Dancing Script', cursive;
+
+  /* Fluid Typography - Scales smoothly from mobile to desktop */
+  --text-fluid-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-fluid-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-fluid-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);
+  --text-fluid-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-fluid-2xl: clamp(1.5rem, 1.35rem + 0.8vw, 2rem);
+  --text-fluid-3xl: clamp(2rem, 1.8rem + 1vw, 2.5rem);
+  --text-fluid-hero: clamp(2.5rem, 2rem + 4vw, 5rem);
+  --text-fluid-mega: clamp(3.5rem, 3rem + 6vw, 8rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  background-color: #fffcfc;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-romantic {
+  font-family: var(--font-romantic) !important;
+  line-height: 1.2;
+}
+
+/* Custom Responsive Utilities */
+.container-fluid {
+  width: 100%;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 5vw, 5rem);
+  padding-right: clamp(1rem, 5vw, 5rem);
+}
+
+.heading-fluid-hero {
+  font-size: var(--text-fluid-hero);
+}
+
+.heading-fluid-mega {
+  font-size: var(--text-fluid-mega);
+}
+
+.heading-fluid-3xl {
+  font-size: var(--text-fluid-3xl);
+}
+
+.text-fluid-base {
+  font-size: var(--text-fluid-base);
+}
+
+.text-fluid-xl {
+  font-size: var(--text-fluid-xl);
+}
+
+.text-fluid-2xl {
+  font-size: var(--text-fluid-2xl);
+}
+
+.text-fluid-3xl {
+  font-size: var(--text-fluid-3xl);
+}
+
+.font-romantic {
+  font-family: 'Dancing Script', cursive !important;
+}
