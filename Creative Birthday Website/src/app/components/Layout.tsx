@@ -143,7 +143,7 @@ export function Layout({ onLogout }: LayoutProps) {
       </motion.header>
 
       {/* Main content - Adjusted for fixed header height */}
-      <main className="relative z-10 pt-24 md:pt-32">
+      <main className="relative z-10 ">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
